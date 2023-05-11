@@ -1,4 +1,4 @@
-module Sorting (quicksort, mergesort) where
+module Sorting (quicksort, mergesort, bubblesort) where
 
 quicksort :: (Ord a) => [a] -> [a]
 quicksort [] = []
@@ -22,3 +22,13 @@ mergesort xs
     where left = take half xs
           right = drop half xs
           half = length xs `div` 2
+
+
+swap :: (Ord a) => [a] -> [a]
+swap []  = []
+swap [x] = [x]
+swap (x:xs) | x > head xs = head xs:swap (x:tail xs)
+            | otherwise = x:swap xs 
+
+bubblesort :: (Ord a) => [a] -> [a] 
+bubblesort xs = foldl (\acc e -> swap acc) xs xs

@@ -11,12 +11,16 @@ test_quicksort = TestCase (assertEqual "quicksort list" [-12, -5, -2, 0, 1, 1, 1
 
 test_mergesort :: Test
 test_mergesort = TestCase (assertEqual "mergesort list" [-12, -10, 1, 10, 12] (mergesort [-10, 10, -12, 12, 1]))
+
+test_bubblesort :: Test
+test_bubblesort = TestCase (assertEqual "bubblesort list" [-6, -5, -4, -3, 7] (bubblesort [-5, -4, 7, -6, -3]))
  
 tests :: Test
 tests = TestList [
     TestLabel "test_quicksort_one_elem_list" test_quicksort_one_elem_list,
     TestLabel "test_quicksort" test_quicksort,
-    TestLabel "test_mergesort" test_mergesort
+    TestLabel "test_mergesort" test_mergesort,
+    TestLabel "test_bubblesort" test_bubblesort
     ]
  
 main :: IO ()
