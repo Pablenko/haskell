@@ -18,7 +18,7 @@ build-type:          Simple
 extra-source-files:  CHANGELOG.md
 
 library algorithms-lib
-  exposed-modules:     Sorting, Misc
+  exposed-modules:     Sorting, Misc, Bst
   -- other-modules:
   -- other-extensions:
   build-depends:       base >=4.13 && <4.14
@@ -37,6 +37,13 @@ executable algorithms
 test-suite sorting-tests
   type: exitcode-stdio-1.0
   main-is: SortingTests.hs
+  build-depends: base >=4.13 && <4.14, HUnit >=1.6, algorithms-lib
+  hs-source-dirs: test
+  default-language: Haskell2010
+
+test-suite bst-tests
+  type: exitcode-stdio-1.0
+  main-is: BstTests.hs
   build-depends: base >=4.13 && <4.14, HUnit >=1.6, algorithms-lib
   hs-source-dirs: test
   default-language: Haskell2010
