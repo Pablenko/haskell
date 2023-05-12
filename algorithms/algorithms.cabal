@@ -18,7 +18,7 @@ build-type:          Simple
 extra-source-files:  CHANGELOG.md
 
 library algorithms-lib
-  exposed-modules:     Sorting
+  exposed-modules:     Sorting, Misc
   -- other-modules:
   -- other-extensions:
   build-depends:       base >=4.13 && <4.14

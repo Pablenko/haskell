@@ -1,4 +1,6 @@
-module Sorting (quicksort, mergesort, bubblesort) where
+module Sorting (quicksort, mergesort, bubblesort, selectionsort) where
+
+import Misc
 
 quicksort :: (Ord a) => [a] -> [a]
 quicksort [] = []
@@ -31,4 +33,10 @@ swap (x:xs) | x > head xs = head xs:swap (x:tail xs)
             | otherwise = x:swap xs 
 
 bubblesort :: (Ord a) => [a] -> [a] 
-bubblesort xs = foldl (\acc e -> swap acc) xs xs
+bubblesort xs = foldl (\acc _ -> swap acc) xs xs
+
+
+selectionsort :: Ord a => [a] -> [a]  
+selectionsort [] = []  
+selectionsort xs = min_elem:selectionsort (delete min_elem xs)  
+    where min_elem = minimum xs
