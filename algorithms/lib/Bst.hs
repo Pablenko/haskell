@@ -38,3 +38,8 @@ bstElem x (Node a left right)
     | x == a = True
     | x < a  = bstElem x left 
     | x > a  = bstElem x right
+
+
+instance Functor BstTree where
+    fmap f EmptyTree = EmptyTree
+    fmap f (Node x left right) = Node (f x) (fmap f left) (fmap f right)

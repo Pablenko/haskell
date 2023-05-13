@@ -18,6 +18,9 @@ test_bst_remove_elem_length_one_tree = TestCase (assertEqual "test_bst_remove_el
 test_bst_remove_elem :: Test
 test_bst_remove_elem = TestCase (assertEqual "test_bst_remove_elem_length_one_tree" (foldr bstInsert EmptyTree [-1, 2]) (bstDelete 1 $ foldr bstInsert EmptyTree [-1, 1, 2]))
 
+test_bst_apply_func :: Test
+test_bst_apply_func = TestCase (assertEqual "test_bst_apply_func" (Node 3 EmptyTree EmptyTree) ( fmap (*3) $ bstInsert 1 EmptyTree))
+
 tests :: Test
 tests = TestList [
     TestLabel "test_bst_one_elem" test_bst_one_elem,
