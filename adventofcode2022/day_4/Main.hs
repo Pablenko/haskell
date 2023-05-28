@@ -1,30 +1,12 @@
 import RIO
 import qualified RIO.Text as Text
-import Text.Megaparsec (Parsec, parse, sepEndBy1)
+import Text.Megaparsec (parse, sepEndBy1)
 import Text.Megaparsec.Char (hspace, char, eol)
-import qualified Text.Megaparsec.Char.Lexer as L
+import Parsing (Parser, readAndParseInput, lexeme, integerParser)
 
 
-type Parser = Parsec Void Text
 data Pair = Pair Int Int deriving (Show)
 data Line = Line Pair Pair deriving (Show)
-
-
-readAndParseInput :: (MonadReader env m, MonadIO m, HasLogFunc env) => FilePath -> Parser a -> m a
-readAndParseInput filePath parser = do
-    x <- parse parser filePath <$> readFileUtf8 filePath
-    either (\e -> do { logError . display . tshow $ "Wrong file format, parsing error!"; exitFailure }) return x
-
-
-lexeme :: Parser a -> Parser a
-lexeme = L.lexeme hspace
-
-
-integerParser :: Parser Int
-integerParser = do
-    sign_ <- maybe 1 (const (-1)) <$> optional (char '-')
-    abs_  <- lexeme L.decimal
-    return (sign_ * abs_)
 
 
 firstP :: Pair -> Int
