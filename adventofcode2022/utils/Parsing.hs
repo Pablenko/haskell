@@ -20,7 +20,4 @@ lexeme = L.lexeme hspace
 
 
 integerParser :: Parser Int
-integerParser = do
-    sign_ <- maybe 1 (const (-1)) <$> optional (char '-')
-    abs_  <- lexeme L.decimal
-    return (sign_ * abs_)
+integerParser = lexeme L.decimal
