@@ -5,9 +5,7 @@ import qualified RIO.Text as Text
 
 
 readInput :: MonadIO m => m [Text]
-readInput = do
-    text <- Text.lines <$> readFileUtf8 "input.txt"
-    return $ text
+readInput = do Text.lines <$> readFileUtf8 "input.txt"
 
 
 calculatePriority :: Char -> Int
@@ -27,8 +25,8 @@ solution xs = sum $ map (calculatePriority . extractLetter) xs
 
 
 run :: (HasLogFunc env) => RIO env ()
-run = readInput >>= logInfo. display . tshow . solution
+run = readInput >>= logInfo . display . solution
 
 
 main :: IO()
-main = runSimpleApp $ run
+main = runSimpleApp run

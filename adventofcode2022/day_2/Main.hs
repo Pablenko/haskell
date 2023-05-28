@@ -36,7 +36,7 @@ fight (_, _) = 3
 
 
 roundScore :: Round -> Int
-roundScore (opp, me) = (fight (opp,me)) + choiceToScore me
+roundScore (opp, me) = fight (opp, me) + choiceToScore me
 
 
 main :: IO ()
