@@ -39,5 +39,9 @@ roundScore :: Round -> Int
 roundScore (opp, me) = fight (opp, me) + choiceToScore me
 
 
+solution :: String -> Int
+solution xs = sum . map roundScore $ parseInput xs
+
+
 main :: IO ()
-main = do parseInput <$> readFile "input.txt" >>= print . sum . map roundScore
+main = do readFile "input.txt" >>= print . solution
