@@ -8,4 +8,4 @@ solution xs =  maximum . map (sum . map read . lines) . splitOn "\n\n" $ xs
 
 main:: IO()
 main = do
-    readFile "input.txt" >>= print . solution
+    readFile "day_1/input.txt" >>= print . solution

@@ -44,4 +44,4 @@ solution xs = sum . map roundScore $ parseInput xs
 
 
 main :: IO ()
-main = do readFile "input.txt" >>= print . solution
+main = do readFile "day_2/input.txt" >>= print . solution

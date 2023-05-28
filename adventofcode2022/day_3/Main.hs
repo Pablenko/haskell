@@ -5,7 +5,7 @@ import qualified RIO.Text as Text
 
 
 readInput :: MonadIO m => m [Text]
-readInput = do Text.lines <$> readFileUtf8 "input.txt"
+readInput = do Text.lines <$> readFileUtf8 "day_3/input.txt"
 
 
 calculatePriority :: Char -> Int

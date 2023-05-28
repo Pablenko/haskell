@@ -46,7 +46,7 @@ lineParser = makePairs <$> integerParser <* lexeme (char '-') <*> integerParser
 
 
 readInput :: (HasLogFunc env) => RIO env [Line]
-readInput = readAndParseInput "input.txt" (sepEndBy1 lineParser eol)
+readInput = readAndParseInput "day_4/input.txt" (sepEndBy1 lineParser eol)
 
 
 overlapping :: Line -> Int
